@@ -26,16 +26,26 @@ class Prova implements Prova {
             pergunta++
         }
     }
-    acertos(): number {
+    acertos(vall: number): number {
         let acertos = 0
+        let acertos2 = 0
         for (const RespQuest of this.gabarito) {
             let NUMquest = 0
-            if (RespQuest == this.respostas[NUMquest]) {
+            if (RespQuest == this.respostas[NUMquest] && NUMquest < 10) {
                 acertos++
+            } else if(RespQuest == this.respostas[NUMquest]) {
+                acertos2++
             } else {
+
             }
         }
-        return acertos
+        if(vall = 1){
+            return acertos
+        } else if(vall = 2){
+            return acertos2
+        } else {
+            return acertos + acertos2
+        }
     }
     setProva(){
         for (let i = 0; i < this.gabarito.length; i++) {
