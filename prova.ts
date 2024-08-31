@@ -3,9 +3,9 @@ let reader = require("readline-sync")
 interface Prova {
     constructor(gabarito: Array<string>);
     respostaAluno(): void;
-    acertos(): number;
+    acertos(call: number): number;
     nota(): number;
-    maior(outraProva: Prova): number;
+    maior(outraProva: Prova): Prova;
 }
 
 class Prova implements Prova {
@@ -54,14 +54,18 @@ class Prova implements Prova {
         }
     }
     nota(): number {
-        for (let o = 0; o < this.respostas.length; o++) {
-            const element = array[o]
-            if (o >= 9) {
-                
-            }
-            
-        }
+        let nota10P = this.acertos(1) / 2
+        let nota5U = this.acertos(2)
+        let notaTOTAL = nota10P + nota5U
+        return notaTOTAL
+    }
+    maior(outraProva: Prova): Prova{
+        return new Prova(['A', 'B', 'E', 'D', 'B', 'C', 'C', 'A', 'B', 'E', 'D', 'D', 'B', 'C', 'C'])
     }
 }
 
 let prova = new Prova(['A', 'B', 'E', 'D', 'B', 'C', 'C', 'A', 'B', 'E', 'D', 'D', 'B', 'C', 'C'])
+
+prova.respostaAluno()
+prova.acertos(3)
+prova.nota()
